@@ -1,0 +1,11 @@
+<?xml version="1.0"?><root xmlns="urn:schemas-upnp-org:device-1-0"><device>
+<deviceType>urn:Belkin:device:controllee:1</deviceType>
+<friendlyName>%$100%</friendlyName>
+<manufacturer>Belkin International Inc.</manufacturer>
+<modelName>Esparto</modelName>
+<modelNumber>%$208%</modelNumber>
+<serialNumber>%$202%</serialNumber>
+<UDN>uuid:%$202%</UDN>
+<presentationURL>/</presentationURL>
+</device></root>
+
