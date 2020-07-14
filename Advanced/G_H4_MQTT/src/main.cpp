@@ -1,5 +1,23 @@
 #include <Arduino.h>
 
+#if 1 
+
+#include<H4Plugins.h>
+H4_USE_PLUGINS(115200,20,false) // Serial baud rate, Q size, SerialCmd autostop
+
+H4P_SerialLogger h4sl;
+H4P_GPIOManager h4gm;
+H4P_FlasherController h4fc;
+H4P_WiFi h4wifi("ORANGE_1","123456789","eiffel");
+H4P_AsyncMQTT h4mqtt("192.168.1.20",1883);
+H4P_AsyncWebServer h4asws;
+
+
+H4P_BinarySwitch h4onof(RELAY_BUILTIN,ACTIVE_HIGH,OFF);
+H4P_UPNPServer h4upnp("Salon Eiffel Tower");
+H4P_MultiFunctionButton h4mfb(BUTTON_BUILTIN,INPUT,ACTIVE_LOW,15,LED_BUILTIN,ACTIVE_LOW);
+
+#else 
 
 #include<H4Plugins.h>
 H4_USE_PLUGINS(115200,20,false) // Serial baud rate, Q size, SerialCmd autostop
@@ -10,17 +28,18 @@ void onMQTTConnect();
 void onMQTTDisconnect();
 
 
-#define SSID ""
-#define PASS ""
+#define SSID "ORANGE_1"
+#define PASS "123456789"
 
-
-H4P_CmdErrors h4ce;
+H4P_SerialLogger h4sl;
 H4P_GPIOManager h4gm;
+H4P_FlasherController h4fc;
 H4P_WiFi h4wifi(SSID,PASS,"H4-Mqtt Test");
-H4P_AsyncMQTT h4mqtt("192.168.1.4",1883,"","",onMQTTConnect,onMQTTDisconnect); // no username / pword
+H4P_AsyncMQTT h4mqtt("192.168.1.20",1883,"","",onMQTTConnect,onMQTTDisconnect); // no username / pword
+H4P_AsyncWebServer h4asws;
 
 H4P_BinaryThing h4bt([](bool b){ 
-    Serial.print("I am now ");Serial.println(b ? "ON":"OFF");
+    Serial.print("I am now ");      Serial.println(b ? "ON":"OFF");
     h4gm.logicalWrite(LED_BUILTIN, b ? ON : OFF);
  });
 
@@ -51,19 +70,7 @@ uint32_t myCallback(vector<string> vs){
 
 }
 
-// thing variableSpeedBlinky([](bool on) {
-//     if (on)
-//         Esparto.flashLED(Esparto.getConfigInt("blinkrate"));
-//     else
-//         Esparto.stopLED();
-// });
-
-
 void h4setup(){
-    Serial.printf("Start the flashing one of many ways:\n");
-    Serial.printf(" * Serial console: switch/0 or switch/1\n");
-    Serial.printf(" * Button on GPIO0 (short press)\n");
-    
     
     h4gm.Output(LED_BUILTIN,
         ACTIVE_LOW,
@@ -71,3 +78,4 @@ void h4setup(){
     );
 }
 
+#endif

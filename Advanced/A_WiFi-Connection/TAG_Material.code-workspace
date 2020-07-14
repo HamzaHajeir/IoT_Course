@@ -1,41 +1,48 @@
 {
 	"folders": [
-		{
-			"name": "A_WiFi-Connection",
-			"path": "."
-		},
-		{
-			"name": "B_WebServer",
-			"path": "C:\\Users\\Hamza\\Documents\\PlatformIO\\Projects\\B_WebServer"
-		},
-		{
-			"name": "C_Access-Point-WebServer",
-			"path": "C:\\Users\\Hamza\\Documents\\PlatformIO\\Projects\\C_Access-Point-WebServer"
-		},
-		{
-			"name": "D_OOP",
-			"path": "C:\\Users\\Hamza\\Documents\\PlatformIO\\Projects\\D_OOP"
-		},
-		{
-			"name": "E_String",
-			"path": "C:\\Users\\Hamza\\Documents\\PlatformIO\\Projects\\E_String"
-		},
-		{
-			"name": "F_H4_SONOFF_Basic",
-			"path": "C:\\Users\\Hamza\\Documents\\PlatformIO\\Projects\\F_H4_SONOFF_Basic"
-		},
-		{
-			"name": "G_H4_MQTT",
-			"path": "C:\\Users\\Hamza\\Documents\\PlatformIO\\Projects\\G_H4_MQTT"
-		},
-		{
-			"path": "C:\\Users\\Hamza\\Documents\\PlatformIO\\Projects\\H_H4_Timer"
-		},
-		{
-			"path": "C:\\Users\\Hamza\\Documents\\PlatformIO\\Projects\\I_FlasherController"
-		},
-		{
-			"path": "C:\\Users\\Hamza\\Documents\\PlatformIO\\Projects\\J_Rotary_Encoder"
-		}
-	]
+        {
+            "name": "A_WiFi-Connection",
+            "path": "."
+        },
+        {
+            "name": "B_WebServer",
+            "path": "..\\B_WebServer"
+        },
+        {
+            "name": "C_Access-Point-WebServer",
+            "path": "..\\C_Access-Point-WebServer"
+        },
+        {
+            "name": "D_OOP",
+            "path": "..\\D_OOP"
+        },
+        {
+            "name": "E_String",
+            "path": "..\\E_String"
+        },
+        {
+            "name": "F_H4_SONOFF_Basic",
+            "path": "..\\F_H4_SONOFF_Basic"
+        },
+        {
+            "name": "G_H4_MQTT",
+            "path": "..\\G_H4_MQTT"
+        },
+        {
+            "path": "..\\H_H4_Timer"
+        },
+        {
+            "path": "..\\I_FlasherController"
+        },
+        {
+            "path": "..\\J_Rotary_Encoder"
+        },
+        {
+            "name": "OOP",
+            "path": "..\\..\\..\\..\\..\\..\\..\\Documents\\PlatformIO\\Projects\\OOP"
+        },
+        {
+            "path": "..\\.."
+        }
+    ]
 }

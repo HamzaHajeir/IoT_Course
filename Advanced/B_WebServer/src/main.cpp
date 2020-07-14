@@ -5,20 +5,20 @@
 #include <ESP8266mDNS.h>
 #include <WiFiClient.h>
 
-const char* ssid = "ORANGE_1";
-const char* password = "123456789";
+const char *ssid = "ORANGE_1";
+const char *password = "123456789";
 
 ESP8266WebServer server(80);
 
-
-
-void handleRoot() {
+void handleRoot()
+{
     //  digitalWrite(led, !digitalRead(led));
     server.send(200, "text/plain", "hello from esp8266!");
     //  digitalWrite(led, 0);
 }
 
-void handleNotFound() {
+void handleNotFound()
+{
     //  digitalWrite(led, 1);
     String message = "File Not Found\n\n";
     message += "URI: ";
@@ -32,82 +32,86 @@ void handleNotFound() {
     //  digitalWrite(led, 0);
 }
 
-void switchON(){
+void switchON()
+{
 
-    digitalWrite(LED_BUILTIN, LOW);   //Turn LED ON
-
+    digitalWrite(LED_BUILTIN, LOW); //Turn LED ON
 
     String message = "LED is ON!\n";
-    server.send(200,"text/plain",message);
+    server.send(200, "text/plain", message);
 }
 
-void switchOFF(){
+void switchOFF()
+{
 
-    digitalWrite(LED_BUILTIN, HIGH);    //Turn LED OFF
-
+    digitalWrite(LED_BUILTIN, HIGH); //Turn LED OFF
 
     String message = "LED is OFF!\n";
-    server.send(200,"text/plain",message);
+    server.send(200, "text/plain", message);
 }
 
+void setup()
+{
+    // put your setup code here, to run once:
 
-void setup() {
-  // put your setup code here, to run once:
+    // put your setup code here, to run once:
+    Serial.begin(115200);
 
-  // put your setup code here, to run once:
-  Serial.begin(115200);
+    // We start by connecting to a WiFi network
 
-  // We start by connecting to a WiFi network
+    Serial.println();
+    Serial.println();
+    Serial.print("Connecting to ");
+    Serial.println(ssid);
 
-  Serial.println();
-  Serial.println();
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
+    WiFi.mode(WIFI_STA);
+    WiFi.begin(ssid, password);
 
-  WiFi.mode(WIFI_STA);
-  WiFi.begin(ssid, password);
+    WiFi.waitForConnectResult();
 
-  WiFi.waitForConnectResult();
+    if (WiFi.status() == WL_CONNECTED)
+    {
+        Serial.println("");
+        Serial.println("WiFi connected");
+        Serial.println("IP address: ");
+        Serial.println(WiFi.localIP());
+    }
+    else
+    {
+        while (1)
+            ;
+    }
 
-  if (WiFi.status() == WL_CONNECTED) {
-      Serial.println("");
-      Serial.println("WiFi connected");
-      Serial.println("IP address: ");
-      Serial.println(WiFi.localIP());
-  } else {
-    while(1)
-        ;
-  }
+    pinMode(LED_BUILTIN, OUTPUT);
 
-  pinMode(LED_BUILTIN, OUTPUT);
+    if (MDNS.begin("esp8266"))
+    {
+        Serial.println("MDNS responder started");
+    }
 
+    server.on("/", handleRoot);
 
-  if (MDNS.begin("esp8266")) {
-      Serial.println("MDNS responder started");
-  }
+    server.on("/ON", switchON);
 
-  server.on("/", handleRoot);
+    server.on("/OFF", switchOFF);
 
-  server.on("/ON", switchON);
+    server.on("/inline", []() { //lambda function
+        server.send(200, "text/plain", "this works as well");
+    });
 
-  server.on("/OFF", switchOFF);
+    server.on("/hamza", []() {
+        server.send(401, "text/plain", "Error auth");
+    });
 
-  server.on("/inline", []() {
-      server.send(200, "text/plain", "this works as well");
-  });
+    server.onNotFound(handleNotFound);
 
-  server.on("/hamza", []() {
-      server.send(502, "text/plain", "Error auth");
-  });
-
-  server.onNotFound(handleNotFound);
-
-  server.begin();
-  Serial.println("HTTP server started");
+    server.begin();
+    Serial.println("HTTP server started");
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
-  server.handleClient();
-  MDNS.update();
+void loop()
+{
+    // put your main code here, to run repeatedly:
+    server.handleClient();
+    MDNS.update();
 }
