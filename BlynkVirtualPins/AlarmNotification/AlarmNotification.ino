@@ -20,21 +20,27 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
   Blynk.begin(auth, ssid, pass);
-  
-  pinMode(D1,INPUT);
+
+  pinMode(D1, INPUT);
+  pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop() {
   Blynk.run();
   static uint32_t prevmillis;
-  if(digitalRead(D1) == HIGH){
-	  
-	  if(millis() - prevmillis >= 7000){
-		led.on();
-		prevmillis = millis();
-	  }
+  if (digitalRead(D1) == HIGH) {
+
+    if (millis() - prevmillis >= 7000) {
+      led.on();
+      prevmillis = millis();
+    }
+    
+    digitalWrite(LED_BUILTIN , LOW);
+    
   }
   else {
-	  led.off();
+    led.off();
+    
+    digitalWrite(LED_BUILTIN , HIGH);
   }
 }
