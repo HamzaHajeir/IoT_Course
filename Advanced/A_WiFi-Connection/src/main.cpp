@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
 
-const char* ssid     = "ORANGE_1";
-const char* password = "123456789";
+const char* ssid     = "yourSSID";
+const char* password = "yourPass";
 
 
 void setup() {
