@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+    ],
+    "settings": {
+        "VSCodeCounter.showInStatusBar": true,
+        "files.associations": {
+            "*.cppx": "cpp"
+        }
+    }
+}

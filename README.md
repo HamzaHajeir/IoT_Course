@@ -20,6 +20,10 @@
 ## Setup PlatformIO IDE
 1. Download and Install [**VSCode** Editor](https://code.visualstudio.com/Download).
 
-2. Within VSCode, Install **PlatformIO IDE** Extension.
+2. Download and Install [**Python** 3.8](https://docs.platformio.org/en/latest/faq.html#install-python-interpreter).
+
+3. Download and Install [**Git**](https://www.atlassian.com/git/tutorials/install-git#windows). 
+
+4. Within **VSCode** Extentions tab,Find and Install **PlatformIO IDE** Extension.
 
     ![PlatformIO within VSCode Extensions](images/PlatformIO%20Extension.JPG)
