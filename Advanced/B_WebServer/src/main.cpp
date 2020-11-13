@@ -12,14 +12,11 @@ ESP8266WebServer server(80);
 
 void handleRoot()
 {
-    //  digitalWrite(led, !digitalRead(led));
     server.send(200, "text/plain", "hello from esp8266!");
-    //  digitalWrite(led, 0);
 }
 
 void handleNotFound()
 {
-    //  digitalWrite(led, 1);
     String message = "File Not Found\n\n";
     message += "URI: ";
     message += server.uri();
@@ -33,7 +30,6 @@ void handleNotFound()
         message += " " + server.argName(i) + ": " + server.arg(i) + "\n";
     }
     server.send(404, "text/plain", message);
-    //  digitalWrite(led, 0);
 }
 
 void switchON()
@@ -58,12 +54,9 @@ void setup()
 {
     // put your setup code here, to run once:
 
-    // put your setup code here, to run once:
     Serial.begin(115200);
 
     // We start by connecting to a WiFi network
-
-    Serial.println();
     Serial.println();
     Serial.print("Connecting to ");
     Serial.println(ssid);
@@ -80,29 +73,26 @@ void setup()
         Serial.println("IP address: ");
         Serial.println(WiFi.localIP());
     }
-    else
+    else        //Cause WDT, Resets the MCU.
     {
         while (1)
             ;
     }
-
-    pinMode(LED_BUILTIN, OUTPUT);
 
     if (MDNS.begin("esp8266"))
     {
         Serial.println("MDNS responder started");
     }
 
+    pinMode(LED_BUILTIN, OUTPUT);
+
+
     server.on("/", handleRoot);
-
     server.on("/ON", switchON);
-
     server.on("/OFF", switchOFF);
-
     server.on("/inline", []() { //lambda function
         server.send(200, "text/plain", "this works as well");
     });
-
     server.on("/hamza", []() {
         server.send(401, "text/plain", "Error auth");
     });

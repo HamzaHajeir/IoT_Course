@@ -14,9 +14,9 @@ Let's not forget that "IOT" is the Internet of *Things*. So what is a "Thing"? T
 
 A Switch is a just a Thing with a predefined output function linked to a single GPIO.
 
-There can only be one *output* Thing (or Switch) in a sketch/app and it must be named as `h4onof`. It is effectively the default handler for the above commands. It is what your device does when any source ( [Serial](h4cmd.md), [MQTT](h4mqtt.md), [HTTP REST](h4asws.md), Amazon Alexa voice command or [linked GPIO input connector](h5gpio.md) ) sends an `on`,`off`,`toggle` or `switch` command.
+There can only be one *output* Thing (or Switch) in a sketch/app and it must be named as `h4onof`. It is effectively the default handler for the above commands. It is what your device does when any source ( [Serial](h4cmd.md), [MQTT](h4mqtt.md), [HTTP REST](h4asws.md), Amazon Alexa voice command or [linked GPIO input connector](h4gm.md) ) sends an `on`,`off`,`toggle` or `switch` command.
 
-You can have many *input* [linked GPIO input connector](h5gpio.md)s all linked to the single *output* `h4onof`. Each of these behaves exactly like its non-Source counterpart except that instead of calling back your code when its state changes, it automatically sends its ON or OFF state to the `h4onof` handler, either a xxxSwitch or a xxxThing.
+You can have many *input* [linked GPIO input connector](h4gm.md)s all linked to the single *output* `h4onof`. Each of these behaves exactly like its non-Source counterpart except that instead of calling back your code when its state changes, it automatically sends its ON or OFF state to the `h4onof` handler, either a xxxSwitch or a xxxThing.
 
 * AnalogThresholdSource [Example Code](../examples/GPIO/H4GM_AnalogThresholdSource/H4GM_AnalogThresholdSource.ino)
 * DebouncedSource [Example Code](../examples/GPIO/H4GM_DebouncedSource/H4GM_DebouncedSource.ino)
@@ -52,7 +52,7 @@ H4_USE_PLUGINS(115200,20,false) // Serial baud rate, Q size, SerialCmd autostop
 H4P_BinarySwitch h4onof(12,ACTIVE_HIGH,OFF);
 ```
 
-Even before adding anything else you can now switch on the light  when any source ( [Serial](h4cmd.md), [MQTT](h4mqtt.md), [HTTP REST](h4asws.md) or [linked GPIO input connector](h5gpio.md) ) sends an `on`,`off`,`toggle` or `switch` command.
+Even before adding anything else you can now switch on the light  when any source ( [Serial](h4cmd.md), [MQTT](h4mqtt.md), [HTTP REST](h4asws.md) or [linked GPIO input connector](h4gm.md) ) sends an `on`,`off`,`toggle` or `switch` command.
 
 Next, add the sensors and tie them all to the `BinarySwitch` `h4onof`
 

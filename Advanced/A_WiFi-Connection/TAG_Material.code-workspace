@@ -38,11 +38,18 @@
             "path": "..\\J_Rotary_Encoder"
         },
         {
-            "name": "OOP",
-            "path": "..\\..\\..\\..\\..\\..\\..\\Documents\\PlatformIO\\Projects\\OOP"
+            "name": "MQTT_Example",
+            "path": "..\\..\\..\\..\\..\\..\\..\\Documents\\PlatformIO\\Projects\\MQTT_Example"
         },
         {
-            "path": "..\\.."
+            "name": "IoT_Course",
+            "path": "..\\..\\..\\..\\..\\..\\..\\Documents\\PlatformIO\\Projects\\IoT_Course"
+        },
+        {
+            "path": "..\\K_H4PersistenetStorage"
+        },
+        {
+            "path": "..\\..\\Thingspeak"
         }
     ]
 }

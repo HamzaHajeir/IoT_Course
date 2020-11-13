@@ -48,7 +48,7 @@ void onReboot(){
 void onFactoryReset(){
     Serial.println("About to factory reset Adieu");   
 }
-s
+
 void h4setup() { // H4 constructor starts Serial
     Serial.println("H4P_BinarySwitch MQTT Example v"H4P_VERSION);
     h4.once(5000,[](){ h4onof.turnOn(); });

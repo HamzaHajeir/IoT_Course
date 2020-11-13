@@ -1,6 +1,9 @@
 #include<H4Plugins.h>
 H4_USE_PLUGINS(115200,20,false) // Serial baud rate, Q size, SerialCmd autostop
 
+#include <Servo.h>
+
+Servo myServo;
 H4P_GPIOManager h4gm;
 
 
@@ -16,10 +19,14 @@ void h4setup() { // H4 constructor starts Serial
 //
 //  min=0, max=100, 50 means set inital value to default, increment by 2 per click
 //
-    h4gm.EncoderAuto(ENCODER_A,ENCODER_B,INPUT,UB_ACTIVE,0,1023,50,10,[](H4GPIOPin* ptr){
+    myServo.attach(D5);
+    myServo.write(0);
+    h4gm.EncoderAuto(ENCODER_A,ENCODER_B,INPUT,UB_ACTIVE,0,180,50,2,[](H4GPIOPin* ptr){
         H4GM_PIN(EncoderAuto); // Create the correct pointer type in 'pin'
         Serial.print("ENCODER AUTO value ");Serial.println(pin->autoValue);
-        analogWrite( D5,  pin->autoValue );
+        myServo.write(pin->autoValue);
+        // analogWrite( D5,  pin->autoValue );
+
     });
 
     pinMode(D5,OUTPUT);
