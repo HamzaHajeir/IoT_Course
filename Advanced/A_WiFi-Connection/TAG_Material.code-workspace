@@ -50,6 +50,12 @@
         },
         {
             "path": "..\\..\\Thingspeak"
+        },
+        {
+            "path": "..\\..\\..\\..\\Cloud Platforms\\Microsoft Azure\\AzureTest"
+        },
+        {
+            "path": "..\\..\\..\\..\\IoT Kit\\Tests\\IoT_Kit_Test"
         }
     ]
 }

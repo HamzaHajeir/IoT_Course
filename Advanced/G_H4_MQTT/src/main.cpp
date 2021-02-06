@@ -17,7 +17,6 @@ H4P_GPIOManager h4gm;
 H4P_FlasherController h4fc;
 H4P_WiFi h4wifi(SSID,PASS,"H4-Mqtt Test");
 H4P_AsyncMQTT h4mqtt("192.168.1.20",1883,"","",onMQTTConnect,onMQTTDisconnect); // no username / pword
-H4P_AsyncWebServer h4asws;
 
 H4P_BinaryThing h4bt([](bool b){ 
     Serial.print("I am now ");      Serial.println(b ? "ON":"OFF");
