@@ -2,8 +2,8 @@
 #include<H4Plugins.h>
 H4_USE_PLUGINS(115200,20,false) // Serial baud rate, Q size, SerialCmd autostop
 
-#define SSID    "ORANGE_1"
-#define PASS    "123456789"
+#define SSID    "XXXXXXXX"
+#define PASS    "XXXXXXXX"
 
 void onChange(const string& name,const string& value){
     Serial.printf("ITEM %s changed to %s\n",CSTR(name),CSTR(value));
@@ -13,7 +13,7 @@ H4P_GPIOManager h4gm;
 H4P_FlasherController h4fc;
 H4P_WiFi h4wifi(SSID,PASS,"H4-Test");
 H4P_AsyncMQTT h4mqtt("192.168.1.4",1883);// Server IP , Port
-H4P_AsyncWebServer h4asws;
+H4P_PersistentStorage h4ps(onChange);
 H4P_BinarySwitch h4onof(RELAY_BUILTIN,ACTIVE_HIGH,OFF,[](bool b){
     if(b)
     {
@@ -21,8 +21,7 @@ H4P_BinarySwitch h4onof(RELAY_BUILTIN,ACTIVE_HIGH,OFF,[](bool b){
     }
 });
 H4P_UPNPServer h4upnp("My Light");
-H4P_MultiFunctionButton h43fb(BUTTON_BUILTIN,INPUT_PULLUP,ACTIVE_LOW,15,LED_BUILTIN,ACTIVE_LOW);
-H4P_PersistentStorage h4ps(onChange);
+H4P_MultiFunctionButton h43fb(BUTTON_BUILTIN,INPUT_PULLUP,ACTIVE_LOW,15);
 
 void h4setup() {
     h4ps.setstring("secret","life, the universe and everything");

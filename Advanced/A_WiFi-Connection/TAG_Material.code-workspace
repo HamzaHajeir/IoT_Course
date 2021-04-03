@@ -56,6 +56,25 @@
         },
         {
             "path": "..\\..\\..\\..\\IoT Kit\\Tests\\IoT_Kit_Test"
+        },
+        {
+            "name": "IoT_Kit_Demos",
+            "path": "..\\..\\..\\..\\..\\..\\..\\Documents\\PlatformIO\\Projects\\IoT_Kit_Demos"
         }
-    ]
+    ],
+    "settings": {
+        "files.associations": {
+            "cmath": "cpp",
+            "array": "cpp",
+            "deque": "cpp",
+            "list": "cpp",
+            "string": "cpp",
+            "unordered_map": "cpp",
+            "unordered_set": "cpp",
+            "vector": "cpp",
+            "initializer_list": "cpp",
+            "regex": "cpp",
+            "functional": "cpp"
+        }
+    }
 }

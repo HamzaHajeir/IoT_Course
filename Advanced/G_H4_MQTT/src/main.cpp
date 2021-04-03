@@ -1,5 +1,4 @@
 #include <Arduino.h>
-
 #include<H4Plugins.h>
 H4_USE_PLUGINS(115200,20,false) // Serial baud rate, Q size, SerialCmd autostop
 
@@ -12,7 +11,6 @@ void onMQTTDisconnect();
 #define SSID "yourSSID"
 #define PASS "yourPASS"
 
-H4P_SerialLogger h4sl;
 H4P_GPIOManager h4gm;
 H4P_FlasherController h4fc;
 H4P_WiFi h4wifi(SSID,PASS,"H4-Mqtt Test");

@@ -1,5 +1,4 @@
 #include <Arduino.h>
-#if 0
 #include<H4Plugins.h>
 H4_USE_PLUGINS(115200,20,false) // Serial baud rate, Q size, SerialCmd autostop
 
@@ -28,29 +27,3 @@ void h4setup() { // H4 constructor starts Serial
     pinMode(D8,OUTPUT);
 
 }
-
-#else 
-
-#include <Ticker.h>
-
-bool b;
-ICACHE_RAM_ATTR void ISR()
-{
-    b = !b;
-}
-void setup()
-{
-    Serial.begin(115200);
-    attachInterrupt(D1,ISR,RISING);
-}
-
-void loop()
-{
-    while(b)
-    {
-        Serial.println(b);
-        delay(500);
-    }
-}
-
-#endif
