@@ -1,18 +1,18 @@
 #include <Arduino.h>
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 
-#include <ESP8266WebServer.h>
-#include <ESP8266mDNS.h>
+#include <WebServer.h>
+#include <ESPmDNS.h>
 #include <WiFiClient.h>
 
 const char *ssid = "yourSSID";
 const char *password = "yourPASS";
 
-ESP8266WebServer server(80);
+WebServer server(80);
 
 void handleRoot()
 {
-    server.send(200, "text/plain", "hello from esp8266!");
+    server.send(200, "text/plain", "hello from esp32!");
 }
 
 void handleNotFound()
@@ -35,7 +35,7 @@ void handleNotFound()
 void switchON()
 {
 
-    digitalWrite(LED_BUILTIN, LOW); //Turn LED ON
+    digitalWrite(LED_BUILTIN, HIGH); //Turn LED ON
 
     String message = "LED is ON!\n";
     server.send(200, "text/plain", message);
@@ -44,7 +44,7 @@ void switchON()
 void switchOFF()
 {
 
-    digitalWrite(LED_BUILTIN, HIGH); //Turn LED OFF
+    digitalWrite(LED_BUILTIN, LOW); //Turn LED OFF
 
     String message = "LED is OFF!\n";
     server.send(200, "text/plain", message);
@@ -79,7 +79,7 @@ void setup()
             ;
     }
 
-    if (MDNS.begin("esp8266"))
+    if (MDNS.begin("esp32"))
     {
         Serial.println("MDNS responder started");
     }
@@ -107,5 +107,4 @@ void loop()
 {
     // put your main code here, to run repeatedly:
     server.handleClient();
-    MDNS.update();
 }

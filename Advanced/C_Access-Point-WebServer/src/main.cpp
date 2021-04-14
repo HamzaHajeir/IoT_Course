@@ -1,12 +1,12 @@
 #include <Arduino.h>
-#include <ESP8266WebServer.h>
-#include <ESP8266WiFi.h>
+#include <WebServer.h>
+#include <WiFi.h>
 #include <WiFiClient.h>
 
-ESP8266WebServer server(80);
+WebServer server(80);
 
 const char *ssid = "ESP_AP";
-const char *password = "AP_PASS";       //8 digits at least.
+const char *password = "12341234";       //8 digits at least.
 
 /* 
     Just a little test message.  Go to http://192.168.4.1 in a web browser
@@ -18,14 +18,14 @@ void handleRoot() {
 }
 
 void switchON() {
-    digitalWrite(LED_BUILTIN, LOW);  //Turn LED ON
+    digitalWrite(LED_BUILTIN, HIGH);  //Turn LED ON
 
     String message = "LED is ON!\n";
     server.send(200, "text/plain", message);
 }
 
 void switchOFF() {
-    digitalWrite(LED_BUILTIN, HIGH);  //Turn LED OFF
+    digitalWrite(LED_BUILTIN, LOW);  //Turn LED OFF
 
     String message = "LED is OFF!\n";
     server.send(200, "text/plain", message);

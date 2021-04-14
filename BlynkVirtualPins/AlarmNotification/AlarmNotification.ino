@@ -1,8 +1,10 @@
 #define BLYNK_PRINT Serial
 
 
-#include <ESP8266WiFi.h>
-#include <BlynkSimpleEsp8266.h>
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
+
 
 
 // You should get Auth Token in the Blynk App.
@@ -15,32 +17,32 @@ char ssid[] = "YourNetworkName";
 char pass[] = "YourPassword";
 
 WidgetLED led(V4);
-
+const int button_pin = 5;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  Blynk.begin(auth, ssid, pass);
+  Blynk.begin(auth, ssid, pass/*, IPAddress(188,166,206,43)*/);
 
-  pinMode(D1, INPUT);
+  pinMode(button_pin, INPUT);
   pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop() {
   Blynk.run();
   static uint32_t prevmillis;
-  if (digitalRead(D1) == HIGH) {
+  if (digitalRead(button_pin) == HIGH) {
 
     if (millis() - prevmillis >= 7000) {
       led.on();
       prevmillis = millis();
     }
-    
+
     digitalWrite(LED_BUILTIN , LOW);
-    
+
   }
   else {
     led.off();
-    
+
     digitalWrite(LED_BUILTIN , HIGH);
   }
 }

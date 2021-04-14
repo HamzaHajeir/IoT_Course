@@ -27,7 +27,7 @@
 
 #include "ThingSpeak.h"
 #include "secrets.h"
-#include <ESP8266WiFi.h>
+#include <WiFi.h>
 
 char ssid[] = SECRET_SSID; // your network SSID (name)
 char pass[] = SECRET_PASS; // your network password
@@ -49,7 +49,7 @@ void setup()
 
 void loop()
 {
-    static uint32_t prevmillis;
+    static uint32_t prevmillis = 20000;
     if (millis() - prevmillis >= 20000)
     {
 
@@ -86,6 +86,6 @@ void loop()
             number = 0;
         }
 
-        delay(20000); // Wait 20 seconds to update the channel again
+        prevmillis = millis();
     }
 }

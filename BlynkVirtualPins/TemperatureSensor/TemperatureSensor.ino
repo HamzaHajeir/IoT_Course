@@ -1,8 +1,10 @@
 #define BLYNK_PRINT Serial
 
 
-#include <ESP8266WiFi.h>
-#include <BlynkSimpleEsp8266.h>
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
+
 
 
 // You should get Auth Token in the Blynk App.
@@ -19,7 +21,7 @@ BlynkTimer timer;
 void pushSensorData(){
 	
   int analogValue = analogRead(A0);
-  float voltage = analogValue * 3.3/1023;
+  float voltage = analogValue * 3.3f/4095;
   float temperature = voltage / 0.01 ;
   
   Blynk.virtualWrite(V2,temperature);
@@ -30,7 +32,7 @@ void pushSensorData(){
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  Blynk.begin(auth, ssid, pass);
+  Blynk.begin(auth, ssid, pass/*, IPAddress(188,166,206,43)*/);
   
   timer.setInterval(500L, pushSensorData);
   

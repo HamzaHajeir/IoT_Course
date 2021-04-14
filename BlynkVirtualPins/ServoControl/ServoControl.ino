@@ -1,8 +1,9 @@
 #define BLYNK_PRINT Serial
 
 
-#include <ESP8266WiFi.h>
-#include <BlynkSimpleEsp8266.h>
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
 
 #include <Servo.h>
 Servo myServo;
@@ -27,8 +28,8 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
 
-  myServo.attach(D5);
-  Blynk.begin(auth, ssid, pass);
+  myServo.attach(13);
+  Blynk.begin(auth, ssid, pass/*, IPAddress(188,166,206,43)*/);
   myServo.write(0);
 }
 
