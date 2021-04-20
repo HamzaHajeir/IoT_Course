@@ -17,7 +17,7 @@ char ssid[] = "YourNetworkName";
 char pass[] = "YourPassword";
 
 WidgetLED led(V4);
-const int button_pin = 5;
+const int button_pin = 25;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
