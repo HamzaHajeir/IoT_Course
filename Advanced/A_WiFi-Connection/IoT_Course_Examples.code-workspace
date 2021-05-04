@@ -38,28 +38,10 @@
             "path": "..\\J_Rotary_Encoder"
         },
         {
-            "name": "MQTT_Example",
-            "path": "..\\..\\..\\..\\..\\..\\..\\Documents\\PlatformIO\\Projects\\MQTT_Example"
-        },
-        {
-            "name": "IoT_Course",
-            "path": "..\\..\\..\\..\\..\\..\\..\\Documents\\PlatformIO\\Projects\\IoT_Course"
-        },
-        {
             "path": "..\\K_H4PersistenetStorage"
         },
         {
             "path": "..\\..\\Thingspeak"
-        },
-        {
-            "path": "..\\..\\..\\..\\Cloud Platforms\\Microsoft Azure\\AzureTest"
-        },
-        {
-            "path": "..\\..\\..\\..\\IoT Kit\\Tests\\IoT_Kit_Test"
-        },
-        {
-            "name": "IoT_Kit_Demos",
-            "path": "..\\..\\..\\..\\..\\..\\..\\Documents\\PlatformIO\\Projects\\IoT_Kit_Demos"
         }
     ],
     "settings": {
