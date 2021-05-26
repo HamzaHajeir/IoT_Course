@@ -12,7 +12,7 @@ const int ledChannel    = 0;
 const int resolution    = 10;
 #elif defined(ARDUINO_ARCH_ESP8266)
 
-#define USER_BTN        D3
+#define BUTTON_PIN        D3
 #define UB_ACTIVE       ACTIVE_LOW
 
 #define ENCODER_A       D7

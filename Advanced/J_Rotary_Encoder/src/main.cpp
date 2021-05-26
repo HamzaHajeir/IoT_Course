@@ -29,7 +29,7 @@ void h4setup() {
         
 
 #ifdef ARDUINO_ARCH_ESP32
-        ledcWrite(LED_PIN, pin->autoValue);
+        ledcWrite(ledChannel, pin->autoValue);
 #else
         analogWrite(LED_PIN, pin->autoValue);
 #endif
